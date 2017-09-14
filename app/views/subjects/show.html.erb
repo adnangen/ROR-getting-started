@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<% 
+  @usrrole = nil;
+  if( !session[:user_id].blank? )  
+   @usr = User.find( session[:user_id] )
+   @usrrole = @usr.role
+  end
+%>
+
+<p>
+  <strong>Created By:</strong>
+
+  <%#= User.find(@subject.userid).name %>
+  <%= @subject.user.name %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @subject.title %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @subject.author %>
+</p>
+
+<p>
+  <strong>Language:</strong>
+  <%= @subject.language %>
+</p>
+
+<p>
+  <strong>Comments:</strong>
+  <%= @subject.comments %>
+</p>
+
+<% if @usrrole == '2' %>
+<%= link_to 'Edit', edit_subject_path(@subject) %> |
+<% end %>
+<%= link_to 'Back', subjects_path %>
