@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+mount Blazer::Engine, at: "blazer"
+
   resources :roles
   resources :subjects
   # get 'admin/index'
@@ -19,8 +21,8 @@ Rails.application.routes.draw do
         delete 'logout' => :destroy
     end
 
-    mount Blazer::Engine, at: "blazer"
     
+
     root 'admin#index'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
